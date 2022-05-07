@@ -7,9 +7,12 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-        body: CustomAppBar(
-      title: "For you",
+    return Scaffold(
+        body: Column(
+      children: const [
+        CustomAppBar(title: "For you"),
+        ShoesSizePreview(),
+      ],
     ));
   }
 }
