@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:shoes_store_app/src/widgets/widgets.dart';
+
 class ShoesSizePreview extends StatelessWidget {
   const ShoesSizePreview({Key? key}) : super(key: key);
 
@@ -7,14 +9,15 @@ class ShoesSizePreview extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-      padding: const EdgeInsets.all(40),
+      // padding: const EdgeInsets.all(40),
       width: double.infinity,
       height: 430,
       decoration:
-          BoxDecoration(color: const Color(0xffFFCF53), borderRadius: BorderRadius.circular(30)),
+          BoxDecoration(color: const Color(0xffFFCF53), borderRadius: BorderRadius.circular(50)),
       child: Column(
         children: const [
           _ShoeImage(),
+          ShoesSizesBar(),
         ],
       ),
     );
@@ -26,11 +29,14 @@ class _ShoeImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: const [
-        Positioned(bottom: 20, right: 0, child: _ShoeShadow()),
-        Image(image: AssetImage("assets/images/azul.png")),
-      ],
+    return Container(
+      padding: const EdgeInsets.all(40),
+      child: Stack(
+        children: const [
+          Positioned(bottom: 20, right: 0, child: _ShoeShadow()),
+          Image(image: AssetImage("assets/images/azul.png")),
+        ],
+      ),
     );
   }
 }
