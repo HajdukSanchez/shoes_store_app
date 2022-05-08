@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Shoes App',
       routes: routes,
-      initialRoute: Routes.shoesDescription.name,
+      initialRoute: Routes.home.name,
     );
   }
 }

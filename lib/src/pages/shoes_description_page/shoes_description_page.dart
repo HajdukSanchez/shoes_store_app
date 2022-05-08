@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:shoes_store_app/src/enums/enums.dart';
 import 'package:shoes_store_app/src/widgets/widgets.dart';
 
 class ShoesDescriptionPage extends StatelessWidget {
@@ -12,8 +13,11 @@ class ShoesDescriptionPage extends StatelessWidget {
         children: [
           Stack(
             children: [
-              const ShoesSizePreview(
-                isFullScreen: true,
+              Hero(
+                tag: HerosEnum.shoes.name,
+                child: const ShoesSizePreview(
+                  isFullScreen: true,
+                ),
               ),
               Positioned(
                   top: 40,
@@ -25,7 +29,7 @@ class ShoesDescriptionPage extends StatelessWidget {
                       color: Colors.white,
                       size: 60,
                     ),
-                    onPressed: () {},
+                    onPressed: () => Navigator.pop(context),
                   ))
             ],
           ),

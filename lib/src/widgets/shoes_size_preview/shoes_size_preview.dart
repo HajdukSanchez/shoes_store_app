@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoes_store_app/src/enums/enums.dart';
 
 import 'package:shoes_store_app/src/widgets/widgets.dart';
 
@@ -9,25 +10,34 @@ class ShoesSizePreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: isFullScreen
-          ? const EdgeInsets.all(0)
-          : const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-      width: double.infinity,
-      height: isFullScreen ? 400 : 430,
-      decoration: BoxDecoration(
-          color: const Color(0xffFFCF53),
-          borderRadius: isFullScreen
-              ? const BorderRadius.only(
-                  bottomLeft: Radius.circular(50), bottomRight: Radius.circular(50))
-              : BorderRadius.circular(50)),
-      child: Column(
-        children: [
-          const _ShoeImage(),
-          if (!isFullScreen) const ShoesSizesBar(),
-        ],
+    return GestureDetector(
+      onTap: () => onTapShoesPreview(context),
+      child: Container(
+        margin: isFullScreen
+            ? const EdgeInsets.all(0)
+            : const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+        width: double.infinity,
+        height: 430,
+        decoration: BoxDecoration(
+            color: const Color(0xffFFCF53),
+            borderRadius: isFullScreen
+                ? const BorderRadius.only(
+                    bottomLeft: Radius.circular(50), bottomRight: Radius.circular(50))
+                : BorderRadius.circular(50)),
+        child: Column(
+          children: [
+            const _ShoeImage(),
+            if (!isFullScreen) const ShoesSizesBar(),
+          ],
+        ),
       ),
     );
+  }
+
+  void onTapShoesPreview(BuildContext context) {
+    if (!isFullScreen) {
+      Navigator.pushNamed(context, Routes.shoesDescription.name);
+    }
   }
 }
 
