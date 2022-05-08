@@ -3,21 +3,30 @@ import 'package:flutter/material.dart';
 import 'package:shoes_store_app/src/widgets/widgets.dart';
 
 class ShoesSizePreview extends StatelessWidget {
-  const ShoesSizePreview({Key? key}) : super(key: key);
+  final bool isFullScreen;
+
+  const ShoesSizePreview({Key? key, this.isFullScreen = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-      // padding: const EdgeInsets.all(40),
+      margin: isFullScreen
+          ? const EdgeInsets.only(
+              bottom: 5,
+            )
+          : const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       width: double.infinity,
-      height: 430,
-      decoration:
-          BoxDecoration(color: const Color(0xffFFCF53), borderRadius: BorderRadius.circular(50)),
+      height: isFullScreen ? 400 : 430,
+      decoration: BoxDecoration(
+          color: const Color(0xffFFCF53),
+          borderRadius: isFullScreen
+              ? const BorderRadius.only(
+                  bottomLeft: Radius.circular(50), bottomRight: Radius.circular(50))
+              : BorderRadius.circular(50)),
       child: Column(
-        children: const [
-          _ShoeImage(),
-          ShoesSizesBar(),
+        children: [
+          const _ShoeImage(),
+          if (!isFullScreen) const ShoesSizesBar(),
         ],
       ),
     );

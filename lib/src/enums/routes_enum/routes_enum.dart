@@ -1,3 +1,1 @@
-enum Routes {
-  home,
-}
+enum Routes { home, shoesDescription }
