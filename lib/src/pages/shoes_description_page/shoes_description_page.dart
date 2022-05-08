@@ -29,7 +29,8 @@ class ShoesDescriptionPage extends StatelessWidget {
                   ),
                   backgroundColor: ThemeData.light().scaffoldBackgroundColor,
                   padding: const EdgeInsets.all(0),
-                )
+                ),
+                const ShoesSkuSelector()
               ],
             ),
           ))
