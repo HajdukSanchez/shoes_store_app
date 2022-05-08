@@ -10,11 +10,28 @@ class ShoesDescriptionPage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          const ShoesSizePreview(
-            isFullScreen: true,
+          Stack(
+            children: [
+              const ShoesSizePreview(
+                isFullScreen: true,
+              ),
+              Positioned(
+                  top: 40,
+                  child: FloatingActionButton(
+                    elevation: 0,
+                    backgroundColor: Colors.transparent,
+                    child: const Icon(
+                      Icons.chevron_left_rounded,
+                      color: Colors.white,
+                      size: 60,
+                    ),
+                    onPressed: () {},
+                  ))
+            ],
           ),
           Expanded(
               child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
             child: Column(
               children: [
                 const ShoesDescription(
@@ -30,10 +47,45 @@ class ShoesDescriptionPage extends StatelessWidget {
                   backgroundColor: ThemeData.light().scaffoldBackgroundColor,
                   padding: const EdgeInsets.all(0),
                 ),
-                const ShoesSkuSelector()
+                const ShoesSkuSelector(),
+                const _SignalButtons()
               ],
             ),
           ))
+        ],
+      ),
+    );
+  }
+}
+
+class _SignalButtons extends StatelessWidget {
+  const _SignalButtons({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          ButtonSignal(
+            icon: Icon(
+              Icons.star_rounded,
+              color: Colors.grey.withOpacity(0.6),
+            ),
+          ),
+          ButtonSignal(
+            icon: Icon(
+              Icons.add_shopping_cart_rounded,
+              color: Colors.grey.withOpacity(0.6),
+            ),
+          ),
+          ButtonSignal(
+            icon: Icon(
+              Icons.settings_rounded,
+              color: Colors.grey.withOpacity(0.6),
+            ),
+          ),
         ],
       ),
     );

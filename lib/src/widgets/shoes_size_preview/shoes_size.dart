@@ -11,9 +11,7 @@ class ShoesSizePreview extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: isFullScreen
-          ? const EdgeInsets.only(
-              bottom: 5,
-            )
+          ? const EdgeInsets.all(0)
           : const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       width: double.infinity,
       height: isFullScreen ? 400 : 430,
