@@ -8,10 +8,31 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-      children: const [
-        CustomAppBar(title: "For you"),
-        ShoesSizePreview(),
+        body: Stack(
+      children: [
+        CustomScrollView(
+          physics: const BouncingScrollPhysics(),
+          slivers: [
+            SliverPersistentHeader(
+                floating: true,
+                delegate: CustomAppBarDelegate(
+                  child: const CustomAppBar(title: "For you"),
+                  maxHeight: 130,
+                  minHeight: 120,
+                )),
+            SliverList(
+              delegate: SliverChildListDelegate(const [
+                ShoesSizePreview(),
+                ShoesDescription(
+                    title: 'Nike Air Max 720',
+                    description:
+                        "The Nike Air Max 720 goes bigger than ever before with Nike's taller Air unit yet, offering more air underfoot for unimaginable, all-day comfort. Has Air Max gone too far? We hope so."),
+                SizedBox(height: 100),
+              ]),
+            )
+          ],
+        ),
+        const Positioned(bottom: 0, left: 0, right: 0, child: AddingCartButton(amount: 1280))
       ],
     ));
   }
