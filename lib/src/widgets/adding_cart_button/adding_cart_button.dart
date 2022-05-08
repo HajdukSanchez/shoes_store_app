@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
 
-import 'package:shoes_store_app/src/widgets/widgets.dart';
-
-class AddingCartButton extends StatelessWidget {
+class CustomButtomBox extends StatelessWidget {
   final double amount;
+  final Widget button;
+  final Color backgroundColor;
+  final EdgeInsetsGeometry padding;
 
-  const AddingCartButton({Key? key, required this.amount}) : super(key: key);
+  const CustomButtomBox(
+      {Key? key,
+      required this.amount,
+      required this.button,
+      this.backgroundColor = const Color(0xFFD4D2D2),
+      this.padding = const EdgeInsets.symmetric(horizontal: 20, vertical: 20)})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
         margin: const EdgeInsets.only(left: 20, right: 20, bottom: 5),
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        padding: padding,
         width: MediaQuery.of(context).size.width,
-        decoration:
-            BoxDecoration(color: const Color(0xFFD4D2D2), borderRadius: BorderRadius.circular(100)),
+        decoration: BoxDecoration(color: backgroundColor, borderRadius: BorderRadius.circular(100)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -22,7 +28,7 @@ class AddingCartButton extends StatelessWidget {
               "\$$amount",
               style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             ),
-            const Button(text: "Add to cart")
+            button
           ],
         ));
   }

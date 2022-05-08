@@ -16,11 +16,20 @@ class ShoesDescriptionPage extends StatelessWidget {
           Expanded(
               child: SingleChildScrollView(
             child: Column(
-              children: const [
-                ShoesDescription(
+              children: [
+                const ShoesDescription(
                     title: 'Nike Air Max 720',
                     description:
                         "The Nike Air Max 720 goes bigger than ever before with Nike's taller Air unit yet, offering more air underfoot for unimaginable, all-day comfort. Has Air Max gone too far? We hope so."),
+                CustomButtomBox(
+                  amount: 180,
+                  button: const Button(
+                    text: "Buy now",
+                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                  ),
+                  backgroundColor: ThemeData.light().scaffoldBackgroundColor,
+                  padding: const EdgeInsets.all(0),
+                )
               ],
             ),
           ))

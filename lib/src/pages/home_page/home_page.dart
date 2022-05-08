@@ -32,7 +32,14 @@ class HomePage extends StatelessWidget {
             )
           ],
         ),
-        const Positioned(bottom: 0, left: 0, right: 0, child: AddingCartButton(amount: 1280))
+        const Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: CustomButtomBox(
+              amount: 1280,
+              button: Button(text: "Add to cart"),
+            ))
       ],
     ));
   }
