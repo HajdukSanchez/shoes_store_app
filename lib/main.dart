@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
@@ -7,6 +8,10 @@ import 'package:shoes_store_app/src/models/models.dart';
 import 'package:shoes_store_app/src/routes/routes.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.dark,
+      systemNavigationBarIconBrightness: Brightness.dark));
   runApp(MultiProvider(
       providers: [ChangeNotifierProvider(create: (_) => ShoesModel())], child: const MyApp()));
 }
