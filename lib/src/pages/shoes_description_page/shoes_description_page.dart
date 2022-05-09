@@ -1,7 +1,9 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
+import 'package:animate_do/animate_do.dart';
+
 import 'package:shoes_store_app/src/enums/enums.dart';
+import 'package:shoes_store_app/src/helpers/helpers.dart';
 import 'package:shoes_store_app/src/widgets/widgets.dart';
 
 class ShoesDescriptionPage extends StatelessWidget {
@@ -9,6 +11,7 @@ class ShoesDescriptionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    changeStatusBarToLight();
     return Scaffold(
       body: Column(
         children: [
@@ -30,7 +33,7 @@ class ShoesDescriptionPage extends StatelessWidget {
                       color: Colors.white,
                       size: 60,
                     ),
-                    onPressed: () => Navigator.pop(context),
+                    onPressed: () => _onTapReturn(context),
                   ))
             ],
           ),
@@ -68,6 +71,11 @@ class ShoesDescriptionPage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _onTapReturn(BuildContext context) {
+    changeStatusBarToDark();
+    Navigator.pop(context);
   }
 }
 

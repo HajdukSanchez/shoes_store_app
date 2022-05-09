@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shoes_store_app/src/enums/enums.dart';
 
+import 'package:shoes_store_app/src/enums/enums.dart';
+import 'package:shoes_store_app/src/helpers/helpers.dart';
 import 'package:shoes_store_app/src/widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {
@@ -8,6 +9,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    changeStatusBarToDark();
     return Scaffold(
         body: Stack(
       children: [
@@ -38,7 +40,7 @@ class HomePage extends StatelessWidget {
             left: 0,
             right: 0,
             child: CustomButtomBox(
-              amount: 1280,
+              amount: 180,
               button: Button(text: "Add to cart"),
             ))
       ],
