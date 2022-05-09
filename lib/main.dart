@@ -1,6 +1,9 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 
+import 'package:provider/provider.dart';
+
+import 'package:shoes_store_app/src/models/models.dart';
 import 'package:shoes_store_app/src/routes/routes.dart';
 import 'package:shoes_store_app/src/enums/routes_enum/routes_enum.dart';
 
@@ -9,7 +12,8 @@ void main() {
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark,
       systemNavigationBarIconBrightness: Brightness.dark));
-  runApp(const MyApp());
+  runApp(MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => ShoesModel())], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

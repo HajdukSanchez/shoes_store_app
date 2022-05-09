@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:provider/provider.dart';
+
+import 'package:shoes_store_app/src/models/models.dart';
+
 class ShoesSizesBar extends StatelessWidget {
   const ShoesSizesBar({Key? key}) : super(key: key);
 
@@ -43,22 +47,32 @@ class _ShoesSizeBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 45,
-      height: 45,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-          color: size == 9.0 ? const Color(0xffF1A23A) : Colors.white,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            if (size == 9.0)
-              const BoxShadow(color: Color(0xffF1A23A), blurRadius: 10, offset: Offset(0, 5))
-          ]),
-      child: Text(size.toString().replaceAll('.0', ''),
-          style: TextStyle(
-              color: size == 9 ? Colors.white : const Color(0xffF1A23A),
-              fontSize: 16,
-              fontWeight: FontWeight.bold)),
+    final shoesModelProvider = Provider.of<ShoesModel>(context);
+
+    return GestureDetector(
+      onTap: () => onTapBox(shoesModelProvider),
+      child: Container(
+        width: 45,
+        height: 45,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+            color: size == shoesModelProvider.shoesSize ? const Color(0xffF1A23A) : Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              if (size == shoesModelProvider.shoesSize)
+                const BoxShadow(color: Color(0xffF1A23A), blurRadius: 10, offset: Offset(0, 5))
+            ]),
+        child: Text(size.toString().replaceAll('.0', ''),
+            style: TextStyle(
+                color:
+                    size == shoesModelProvider.shoesSize ? Colors.white : const Color(0xffF1A23A),
+                fontSize: 16,
+                fontWeight: FontWeight.bold)),
+      ),
     );
+  }
+
+  void onTapBox(ShoesModel shoesModelProvider) {
+    shoesModelProvider.shoesSize = size;
   }
 }
