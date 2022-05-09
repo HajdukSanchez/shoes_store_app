@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:shoes_store_app/src/enums/enums.dart';
 
+import 'package:provider/provider.dart';
+
+import 'package:shoes_store_app/src/enums/enums.dart';
+import 'package:shoes_store_app/src/models/models.dart';
 import 'package:shoes_store_app/src/widgets/widgets.dart';
 
 class ShoesSizePreview extends StatelessWidget {
@@ -46,12 +49,14 @@ class _ShoeImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final shoesModelProvider = Provider.of<ShoesModel>(context);
+
     return Container(
       padding: const EdgeInsets.all(40),
       child: Stack(
-        children: const [
-          Positioned(bottom: 20, right: 0, child: _ShoeShadow()),
-          Image(image: AssetImage("assets/images/azul.png")),
+        children: [
+          const Positioned(bottom: 20, right: 0, child: _ShoeShadow()),
+          Image(image: AssetImage(shoesModelProvider.assetImage)),
         ],
       ),
     );
